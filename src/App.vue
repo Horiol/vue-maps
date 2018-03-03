@@ -5,10 +5,9 @@
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+  export default {
+    name: 'app'
+  }
 </script>
 
-<style>
-</style>
+<style src="font-awesome/css/font-awesome.min.css"></style>

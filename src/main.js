@@ -7,9 +7,6 @@ import router from './router'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import fontawesome from '@fortawesome/fontawesome'
-
-Vue.use(fontawesome)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
