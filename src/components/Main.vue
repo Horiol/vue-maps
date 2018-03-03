@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-button class="in-front" style="top:1rem;left:1rem;">Click</b-button>
     <Map></Map>
   </div>
 </template>
