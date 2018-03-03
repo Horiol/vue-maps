@@ -1,6 +1,5 @@
 <template>
-  <div id="myMap" class="map">
-  </div>
+  <div id="myMap" class="map"></div>
 </template>
 
 <script>
@@ -9,23 +8,41 @@ export default {
   name: 'Map',
   data () {
     return {
-      myMap: null
+      myMap: null,
+      markers: []
     }
   },
   mounted () {
-    var L = window.L
-    this.myMap = L.map('myMap', {
+    this.myMap = window.L.map('myMap', {
       zoomControl: false
     }).setView([0, 0], 2)
 
     // add zoom control with your options
-    L.control.zoom({
+    window.L.control.zoom({
       position: 'bottomright'
     }).addTo(this.myMap)
 
-    L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    window.L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
       maxZoom: 19
     }).addTo(this.myMap)
+  },
+  methods: {
+    setCurrentLocation: function (position) {
+      for (var i = 0; i < this.markers.length; i++) {
+        this.myMap.removeLayer(this.markers[i])
+      }
+      this.merkers = []
+      this.setLocation(position)
+      this.setMarker(position)
+    },
+    setLocation: function (position) {
+      this.myMap.setView([position.coords.latitude, position.coords.longitude], 18)
+    },
+    setMarker: function (position) {
+      var marker = window.L.marker([position.coords.latitude, position.coords.longitude])
+      this.markers.push(marker)
+      marker.addTo(this.myMap)
+    }
   }
 }
 </script>

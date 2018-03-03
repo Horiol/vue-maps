@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Map></Map>
+    <b-button class="in-front" style="top:1rem;left:1rem;" title="Current location" @click="setLocation">
+      <i class="fa fa-compass fa-2x"></i>
+    </b-button>
+    <Map ref="myMap"></Map>
   </div>
 </template>
 
@@ -14,6 +17,11 @@ export default {
   },
   data () {
     return {
+    }
+  },
+  methods: {
+    setLocation: function () {
+      navigator.geolocation.getCurrentPosition(this.$refs.myMap.setCurrentLocation)
     }
   }
 }
